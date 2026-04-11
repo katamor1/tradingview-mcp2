@@ -1,0 +1,8 @@
+# .codex/config.toml
+# Project-scoped Codex config that registers this repo's local TradingView MCP server.
+# This exists so Codex can use this MCP without changing the user's global Codex settings.
+# RELEVANT FILES:src/tradingview_mcp/server.py,pyproject.toml,INSTALLATION.md,README.md
+[mcp_servers.tradingview_mcp_local]
+command = "C:\\Users\\stell\\source\\repos\\tradingview-mcp\\.venv\\Scripts\\python.exe"
+args = ["C:\\Users\\stell\\source\\repos\\tradingview-mcp\\src\\tradingview_mcp\\server.py"]
+cwd = "C:\\Users\\stell\\source\\repos\\tradingview-mcp"
