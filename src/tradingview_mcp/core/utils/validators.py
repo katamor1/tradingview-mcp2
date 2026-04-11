@@ -3,9 +3,18 @@ import os
 from typing import Set
 
 ALLOWED_TIMEFRAMES: Set[str] = {"5m", "15m", "1h", "4h", "1D", "1W", "1M"}
+_TIMEFRAME_ALIASES = {
+    "5m": "5m",
+    "15m": "15m",
+    "1h": "1h",
+    "4h": "4h",
+    "1d": "1D",
+    "1w": "1W",
+    "1m": "1M",
+}
 
 # Exchanges that represent stock markets (not crypto)
-STOCK_EXCHANGES: Set[str] = {"egx", "bist", "nasdaq", "nyse", "bursa", "myx", "klse", "ace", "leap", "hkex", "hk", "hsi"}
+STOCK_EXCHANGES: Set[str] = {"egx", "bist", "nasdaq", "nyse", "bursa", "myx", "klse", "ace", "leap", "hkex", "hk", "hsi", "asx"}
 
 EXCHANGE_SCREENER = {
     "all": "crypto",
@@ -33,6 +42,7 @@ EXCHANGE_SCREENER = {
     "hk": "hongkong",       # Hong Kong (alternate)
     "hsi": "hongkong",      # Hang Seng Index constituents
     "nyse": "america",
+    "asx": "australia",     # Australian Securities Exchange
 }
 
 # Get absolute path to coinlist directory relative to this module
@@ -48,8 +58,8 @@ COINLIST_DIR = os.path.join(_package_dir, 'coinlist')
 def sanitize_timeframe(tf: str, default: str = "5m") -> str:
     if not tf:
         return default
-    tfs = tf.strip()
-    return tfs if tfs in ALLOWED_TIMEFRAMES else default
+    normalized = tf.strip().lower()
+    return _TIMEFRAME_ALIASES.get(normalized, default)
 
 
 def sanitize_exchange(ex: str, default: str = "kucoin") -> str:

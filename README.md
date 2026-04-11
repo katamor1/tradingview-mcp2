@@ -1,5 +1,7 @@
 # 📈 AI Trading Intelligence Framework — MCP Server
 
+<a href="https://trendshift.io/repositories/25110" target="_blank"><img src="https://trendshift.io/api/badge/repositories/25110" alt="atilaahmettaner%2Ftradingview-mcp | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+
 **The most complete AI-powered trading toolkit for Claude and MCP clients.**
 Backtesting + Live Sentiment + Yahoo Finance + 30+ Technical Analysis Tools — all in one MCP server.
 
@@ -58,16 +60,21 @@ pip install tradingview-mcp-server
 ```
 
 ### Claude Desktop Config (`claude_desktop_config.json`)
+
+> **Note:** On macOS, GUI apps like Claude Desktop may not have `~/.local/bin` in their PATH. Use the full path to `uvx` to avoid "command not found" errors.
+
 ```json
 {
   "mcpServers": {
     "tradingview": {
-      "command": "uvx",
-      "args": ["tradingview-mcp-server"]
+      "command": "/Users/YOUR_USERNAME/.local/bin/uvx",
+      "args": ["--from", "tradingview-mcp-server", "tradingview-mcp"]
     }
   }
 }
 ```
+
+On Linux, replace `/Users/YOUR_USERNAME` with `/home/YOUR_USERNAME`. On Windows, use `%USERPROFILE%\.local\bin\uvx.exe`.
 
 ### Or run from source
 ```bash
