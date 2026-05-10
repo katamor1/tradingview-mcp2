@@ -37,6 +37,8 @@ https://github-production-user-asset-6210df.s3.amazonaws.com/67838093/478689497-
 
 ![tradingview-mcp Architecture](assets/architecture.png)
 
+For a code-grounded Japanese specification of the current MCP tools, internal design, and validation approach, see [docs/specification/README.md](docs/specification/README.md).
+
 ---
 
 ## ✨ Why tradingview-mcp?
